@@ -5,12 +5,19 @@ AutoReadMe is an instant README generator for developers, automating the creatio
 ## 📌 Features
 
 ✅ Instant README Generation – Create a README.md in seconds.
+
 ✅ Interactive CLI – Choose templates, add badges, and preview metadata.
+
 ✅ Multiple README Templates – Basic, Open Source, CLI Tool, API Docs.
+
 ✅ GitHub Badges Integration – Add dynamic badges for GitHub stats.
+
 ✅ Debug Mode – View detailed metadata before generating README.
+
 ✅ Persistent Logs – Retrieve past README generations.
+
 ✅ Cross-Platform Support – Works on Windows, macOS, Linux.
+
 
 
 ## ⚙️ Installation
