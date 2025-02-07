@@ -2,35 +2,21 @@ import fs from "fs";
 import path from "path";
 import chalk from "chalk";
 
-const generateReadme = (metadata, includeBadges) => {
-  if (!metadata) {
-    console.log(chalk.red("Error: No project metadata found. README generation aborted."));
-    return;
-  }
-
-  // Extract GitHub repo details for badges
-  let repoBadgePath = "";
-  if (metadata.repository && metadata.repository.includes("github.com")) {
-    const repoParts = metadata.repository.split("github.com/")[1].split("/");
-    const username = repoParts[0];
-    const repoName = repoParts[1];
-
-    repoBadgePath = `${username}/${repoName}`;
-  }
-
-  let readmeContent = `# ${metadata.name} 🚀  
+// 📌 Function for Base README (Common Sections)
+const baseReadme = (metadata, includeBadges) => {
+  let content = `# ${metadata.name} 🚀  
 
 > ${metadata.description}  
 
 ## 📌 Table of Contents
-- [🏆 Badges](#-badges)
+if (includeBadges) {
 - [📖 Overview](#-overview)
 - [⚙️ Installation](#-installation)
 - [🚀 Features](#-features)
 - [📂 Project Structure](#-project-structure)
 - [💡 Usage](#-usage)
-- [👥 Contributing](#-contributing)
 - [🛠️ Tech Stack](#-tech-stack)
+- [🌍 Repository](#-repository)
 - [📜 License](#-license)
 - [🔮 Future Improvements](#-future-improvements)
 - [❓ FAQ](#-faq)
@@ -38,21 +24,21 @@ const generateReadme = (metadata, includeBadges) => {
 `;
 
   if (includeBadges) {
-    readmeContent += `## 🏆 Badges
-![GitHub stars](https://img.shields.io/github/stars/${repoBadgePath}.svg)
-![GitHub issues](https://img.shields.io/github/issues/${repoBadgePath}.svg)
-![GitHub license](https://img.shields.io/github/license/${repoBadgePath}.svg)
-![npm downloads](https://img.shields.io/npm/dt/${metadata.name}.svg)
+    content += `## 🏆 Badges  
+![GitHub stars](https://img.shields.io/github/stars/${metadata.repository}.svg)  
+![GitHub issues](https://img.shields.io/github/issues/${metadata.repository}.svg)  
+![GitHub license](https://img.shields.io/github/license/${metadata.repository}.svg)  
+![npm downloads](https://img.shields.io/npm/dt/${metadata.name}.svg)  
 
 `;
   }
 
-  readmeContent += `## 📖 Overview
-${metadata.description}
+  content += `## 📖 Overview  
+${metadata.description}  
 
 This project is designed to **solve XYZ problem** using **XYZ technology**. It is lightweight, highly customizable, and easy to set up.
 
-## ⚙️ Installation
+## ⚙️ Installation  
 
 \`\`\`sh
 # Clone the repository
@@ -68,11 +54,11 @@ npm install
 npm start
 \`\`\`
 
-> 📝 **Note:** Make sure you have **Node.js v14+** installed before running this project.
+> 📝 **Note:** Ensure that **Node.js v14+** is installed before running this project.
 
 ---
 
-## 🚀 Features
+## 🚀 Features  
 ✅ Feature 1 - Description  
 ✅ Feature 2 - Description  
 ✅ Feature 3 - Description  
@@ -80,7 +66,7 @@ npm start
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure  
 
 \`\`\`sh
 my-project/
@@ -93,11 +79,11 @@ my-project/
 │── README.md          # Documentation
 \`\`\`
 
-> 💡 **Tip:** This is a suggested structure. You can modify it based on your needs.
+> 💡 **Tip:** Modify this structure based on your needs.
 
 ---
 
-## 💡 Usage
+## 💡 Usage  
 
 \`\`\`sh
 # Run in development mode
@@ -110,28 +96,73 @@ npm run build
 npm test
 \`\`\`
 
-> 🛠️ **For CLI-based projects**, replace this with example command usages.
+`;
 
----
+  return content;
+};
 
-## 👥 Contributing
+// 📌 Function for Open Source README
+const openSourceReadme = () => {
+  return `## 🤝 Contributing  
+- Fork this repository  
+- Clone it: \`git clone <repository_url>\`  
+- Create a new branch and contribute!  
 
-Contributions are always welcome! To contribute:
-1. **Fork the repository**
-2. **Create a new branch** for your feature:
-   \`\`\`sh
-   git checkout -b feature-name
-   \`\`\`
-3. **Make your changes & commit**:
-   \`\`\`sh
-   git commit -m "Add feature-name"
-   \`\`\`
-4. **Push to your fork & submit a PR**.
+## 📜 Code of Conduct  
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md).  
 
----
+`;
+};
 
-## 🛠️ Tech Stack
+// 📌 Function for CLI Tool README
+const cliToolReadme = (metadata) => {
+  return `## ⚙️ CLI Commands  
+\`\`\`sh
+# Install globally
+npm install -g ${metadata.name}
 
+# Run the CLI tool
+${metadata.name} --help
+\`\`\`
+
+`;
+};
+
+// 📌 Function for API Docs README
+const apiDocsReadme = () => {
+  return `## 📌 API Endpoints  
+\`\`\`sh
+GET /api/v1/users
+POST /api/v1/auth/login
+PUT /api/v1/users/:id
+DELETE /api/v1/users/:id
+\`\`\`
+
+## 📜 API Documentation  
+Refer to the [API Documentation](docs/api.md) for detailed usage and response formats.  
+
+`;
+};
+
+// 📌 Main function to generate README
+const generateReadme = (metadata, includeBadges, templateType) => {
+  let readmeContent = baseReadme(metadata, includeBadges);
+
+  switch (templateType) {
+    case "open-source":
+      readmeContent += openSourceReadme();
+      break;
+    case "cli-tool":
+      readmeContent += cliToolReadme(metadata);
+      break;
+    case "api-docs":
+      readmeContent += apiDocsReadme();
+      break;
+    default:
+      break; // Basic template already included
+  }
+
+  readmeContent += `## 🛠️ Tech Stack  
 🔹 **Frontend:** React, Vue, or your choice  
 🔹 **Backend:** Node.js, Express  
 🔹 **Database:** MongoDB, PostgreSQL  
@@ -139,12 +170,15 @@ Contributions are always welcome! To contribute:
 
 ---
 
-## 📜 License
+## 🌍 Repository  
+- **GitHub Repo**: ${metadata.repository}
+
+## 📜 License  
 This project is licensed under the **${metadata.license}** License.
 
 ---
 
-## 🔮 Future Improvements
+## 🔮 Future Improvements  
 - [ ] Feature 1  
 - [ ] Feature 2  
 - [ ] Improve performance  
@@ -152,7 +186,7 @@ This project is licensed under the **${metadata.license}** License.
 
 ---
 
-## ❓ FAQ
+## ❓ FAQ  
 
 **Q: How do I customize this project?**  
 A: Edit \`config.js\` or modify \`package.json\` settings.
@@ -162,20 +196,12 @@ A: Absolutely! Follow best practices and security guidelines.
 
 ---
 
-> 📝 **Notes:**  
-> - This README file can be further **customized for different templates** like CLI tools, API projects, or open-source frameworks.  
-> - The "TODO" section should be updated as features get implemented.  
-> - Contributors should ensure **code consistency** with linting tools.
-
----
-
-🚀 **Generated by [AutoReadMe](https://github.com/CodeTirtho97/AutoREADME)**
+🚀 **Generated by [AutoReadMe](https://github.com/your-repo-link)**  
 `;
 
   const readmePath = path.resolve(process.cwd(), "README.md");
-  
   fs.writeFileSync(readmePath, readmeContent, "utf-8");
-  
+
   console.log(chalk.green(`✅ README.md successfully created at ${readmePath}`));
 };
 

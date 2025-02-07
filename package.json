@@ -10,6 +10,8 @@
   "dependencies": {
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
+    "figlet": "^1.8.0",
+    "inquirer": "^12.4.1",
     "simple-git": "^3.27.0"
   }
 }

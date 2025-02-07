@@ -1,146 +1,126 @@
-# AutoREADME 🚀  
+AutoReadMe – Instant README Generator 🚀
 
-> AutoREADME - Instant README Generator  
+   
 
-## 📌 Table of Contents
-- [🏆 Badges](#-badges)
-- [📖 Overview](#-overview)
-- [⚙️ Installation](#-installation)
-- [🚀 Features](#-features)
-- [📂 Project Structure](#-project-structure)
-- [💡 Usage](#-usage)
-- [👥 Contributing](#-contributing)
-- [🛠️ Tech Stack](#-tech-stack)
-- [📜 License](#-license)
-- [🔮 Future Improvements](#-future-improvements)
-- [❓ FAQ](#-faq)
+AutoReadMe is an instant README generator for developers, automating the creation of structured and detailed README.md files for various project types. It supports interactive CLI mode, different README templates, GitHub badges integration, and debug mode for enhanced customization.
 
-## 🏆 Badges
-![GitHub stars](https://img.shields.io/github/stars/CodeTirtho97/AutoREADME.svg)
-![GitHub issues](https://img.shields.io/github/issues/CodeTirtho97/AutoREADME.svg)
-![GitHub license](https://img.shields.io/github/license/CodeTirtho97/AutoREADME.svg)
-![npm downloads](https://img.shields.io/npm/dt/autoreadme.svg)
+📌 Features
 
-## 📖 Overview
-AutoReadMe - Instant README Generator
+✅ Instant README Generation – Create a README.md in seconds.✅ Interactive CLI – Choose templates, add badges, and preview metadata.✅ Multiple README Templates – Basic, Open Source, CLI Tool, API Docs.✅ GitHub Badges Integration – Add dynamic badges for GitHub stats.✅ Debug Mode – View detailed metadata before generating README.✅ Persistent Logs – Retrieve past README generations.✅ Smart .gitignore Handling – Auto-updates .gitignore to prevent log commits.✅ Cross-Platform Support – Works on Windows, macOS, Linux.
 
-This project is designed to **solve XYZ problem** using **XYZ technology**. It is lightweight, highly customizable, and easy to set up.
+⚙️ Installation
 
-## ⚙️ Installation
+Install globally via npm:
 
-```sh
-# Clone the repository
-git clone https://github.com/CodeTirtho97/AutoREADME my-project
+npm install -g autoreadme
 
-# Navigate to the project directory
-cd my-project
+Verify installation:
 
-# Install dependencies
-npm install
+autoreadme --version
 
-# Run the application
-npm start
-```
+🚀 Usage
 
-> 📝 **Note:** Make sure you have **Node.js v14+** installed before running this project.
+Generate a README.md using interactive CLI:
 
----
+autoreadme generate
 
-## 🚀 Features
-✅ Feature 1 - Description  
-✅ Feature 2 - Description  
-✅ Feature 3 - Description  
-✅ Feature 4 - Description  
+You'll be prompted to:
+1️⃣ Select a README template (Basic, Open Source, CLI Tool, API Docs).2️⃣ Choose whether to include GitHub badges.3️⃣ Auto-generate and save README.md.
 
----
+Example CLI Output
 
-## 📂 Project Structure
+📌 Extracting project metadata...
+✅ Project Metadata Retrieved successfully!!
+✔ 📌 Select a README template: 🛠 CLI Tool (Commands, Usage)
+✔ 🏆 Do you want to include GitHub badges? No
+📄 Generating README.md using "cli-tool" template...
+✅ README.md successfully created at /your_project/README.md
 
-```sh
-my-project/
-│── src/               # Source code
-│   ├── components/    # UI Components
-│   ├── utils/         # Utility functions
-│   ├── api/           # API calls
-│── public/            # Static assets
-│── package.json       # Project metadata
-│── README.md          # Documentation
-```
+📄 Available Templates
 
-> 💡 **Tip:** This is a suggested structure. You can modify it based on your needs.
+AutoReadMe supports the following README templates:
 
----
+Template Type
 
-## 💡 Usage
+Description
 
-```sh
-# Run in development mode
-npm run dev
+📄 Basic
 
-# Build for production
-npm run build
+Minimal README with project details, installation, and usage.
 
-# Run tests
-npm test
-```
+🌍 Open Source
 
-> 🛠️ **For CLI-based projects**, replace this with example command usages.
+Includes contributing guide & code of conduct.
 
----
+🛠 CLI Tool
 
-## 👥 Contributing
+Adds CLI commands, usage examples.
 
-Contributions are always welcome! To contribute:
-1. **Fork the repository**
-2. **Create a new branch** for your feature:
-   ```sh
-   git checkout -b feature-name
-   ```
-3. **Make your changes & commit**:
-   ```sh
-   git commit -m "Add feature-name"
-   ```
-4. **Push to your fork & submit a PR**.
+🔗 API Docs
 
----
+Includes API endpoints, documentation links.
 
-## 🛠️ Tech Stack
+🛠 CLI Options
 
-🔹 **Frontend:** React, Vue, or your choice  
-🔹 **Backend:** Node.js, Express  
-🔹 **Database:** MongoDB, PostgreSQL  
-🔹 **DevOps:** Docker, CI/CD  
+Command
 
----
+Description
 
-## 📜 License
-This project is licensed under the **MIT** License.
+autoreadme generate
 
----
+Run interactive mode to generate README.md.
 
-## 🔮 Future Improvements
-- [ ] Feature 1  
-- [ ] Feature 2  
-- [ ] Improve performance  
-- [ ] More integrations  
+autoreadme --help
 
----
+Show available commands.
 
-## ❓ FAQ
+autoreadme --version
 
-**Q: How do I customize this project?**  
-A: Edit `config.js` or modify `package.json` settings.
+Display current version.
 
-**Q: Can I use this in production?**  
-A: Absolutely! Follow best practices and security guidelines.
+autoreadme debug
 
----
+Enable debug mode to inspect metadata.
 
-> 📝 **Notes:**  
-> - This README file can be further **customized for different templates** like CLI tools, API projects, or open-source frameworks.  
-> - The "TODO" section should be updated as features get implemented.  
-> - Contributors should ensure **code consistency** with linting tools.
+autoreadme logs
 
----
+View past README generation logs.
 
-🚀 **Generated by [AutoReadMe](https://github.com/your-repo-link)**
+🐞 Debugging & Logs
+
+Enable Debug Mode
+
+autoreadme generate
+
+✔ Select 🐞 Enable Debug Mode
+
+📌 Displays full metadata output before README generation.
+
+View Logs
+
+autoreadme generate
+
+✔ Select 🔍 View Logs
+
+📌 Displays history of README generations and exits.
+
+Log Storage
+
+Logs are stored in ~/.autoreadme/logs.json (hidden from users).
+
+The file is automatically ignored in .gitignore to prevent GitHub commits.
+
+🤝 Contributing
+
+We welcome contributions! To contribute:
+1️⃣ Fork the repository.2️⃣ Clone it: git clone https://github.com/CodeTirtho97/AutoReadMe.git3️⃣ Create a new branch & submit a PR.
+
+📜 License
+
+This project is licensed under the MIT License. See LICENSE for details.
+
+🔗 Links
+
+GitHub Repo: AutoReadMe
+
+NPM Package: AutoReadMe
