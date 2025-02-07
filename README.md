@@ -10,7 +10,6 @@ AutoReadMe is an instant README generator for developers, automating the creatio
 ✅ GitHub Badges Integration – Add dynamic badges for GitHub stats.
 ✅ Debug Mode – View detailed metadata before generating README.
 ✅ Persistent Logs – Retrieve past README generations.
-✅ Smart .gitignore Handling – Auto-updates .gitignore to prevent log commits.
 ✅ Cross-Platform Support – Works on Windows, macOS, Linux.
 
 
