@@ -11,10 +11,10 @@ program
   .command("generate")
   .option("--badges", "Include GitHub & npm badges in the README")
   .description("Generate a README.md file")
-  .action((options) => {
+  .action(async (options) => {
     console.log(chalk.blue("\n📌 Extracting project metadata..."));
 
-    const metadata = readMetadata();
+    const metadata = await readMetadata();
 
     if (metadata) {
       console.log(chalk.yellow("\n✅ Project Metadata Retrieved:"));

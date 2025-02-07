@@ -1,11 +1,12 @@
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
+import simpleGit from "simple-git";
 
-const readMetadata = () => {
+const readMetadata = async () => {
   try {
     const packageJsonPath = path.resolve(process.cwd(), "package.json");
-    
+
     if (!fs.existsSync(packageJsonPath)) {
       console.log(chalk.red("Error: No package.json found in this directory."));
       return null;
@@ -13,10 +14,24 @@ const readMetadata = () => {
 
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
 
-    // Check if the repository URL exists
     let repositoryUrl = "Not specified";
+
+    // 1️⃣ Check for repo URL in package.json
     if (packageJson.repository && packageJson.repository.url) {
       repositoryUrl = packageJson.repository.url.replace(/^git\+/, "").replace(/\.git$/, "");
+    } else {
+      // 2️⃣ If missing, try getting repo URL from .git/config
+      try {
+        const git = simpleGit();
+        const remotes = await git.getRemotes(true);
+
+        const originRemote = remotes.find((remote) => remote.name === "origin");
+        if (originRemote) {
+          repositoryUrl = originRemote.refs.fetch.replace(/\.git$/, "");
+        }
+      } catch (gitError) {
+        console.log(chalk.yellow("⚠️ Could not fetch repo from .git/config."));
+      }
     }
 
     return {
