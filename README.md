@@ -1,4 +1,5 @@
-# AutoReadMe – Instant README Boilerplate Generator 🚀
+# AutoReadMe – 
+# Instant README Boilerplate Generator 🚀
 
 AutoReadMe is an instant README generator for developers, automating the creation of structured and detailed README.md files for various project types. It supports interactive CLI mode, different README templates, GitHub badges integration, and debug mode for enhanced customization.
 
@@ -127,4 +128,5 @@ This project is licensed under the MIT License. See LICENSE for details.
 ## 🔗 Links
 
 GitHub Repo: [AutoReadMe_GitHub](https://github.com/CodeTirtho97/AutoREADME)
+
 NPM Package: [AutoReadMe_NPM](https://www.npmjs.com/package/autoreadme-cli)
