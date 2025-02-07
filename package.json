@@ -1,0 +1,14 @@
+{
+  "name": "autoreadme",
+  "version": "1.0.0",
+  "description": "AutoReadMe - Instant README Generator",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "autoreadme": "./bin/cli.js"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0"
+  }
+}
