@@ -1,6 +1,6 @@
-# autoreadme 🚀  
+# AutoREADME 🚀  
 
-> AutoReadMe - Instant README Generator  
+> AutoREADME - Instant README Generator  
 
 ## 📌 Table of Contents
 - [🏆 Badges](#-badges)

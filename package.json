@@ -1,7 +1,7 @@
 {
   "name": "autoreadme",
   "version": "1.0.0",
-  "description": "AutoReadMe - Instant README Generator",
+  "description": "AutoREADME - Instant README Generator",
   "license": "MIT",
   "type": "module",
   "bin": {
