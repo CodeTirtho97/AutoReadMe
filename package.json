@@ -1,6 +1,6 @@
 {
   "name": "autoreadme-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Instant README Boilerplate Generator - Create professional README.md files automatically",
   "main": "bin/cli.js",
   "type": "module",
@@ -10,7 +10,13 @@
   "scripts": {
     "test": "node bin/cli.js generate"
   },
-  "keywords": ["cli", "README", "generator", "documentation", "automation"],
+  "keywords": [
+    "cli",
+    "README",
+    "generator",
+    "documentation",
+    "automation"
+  ],
   "author": "CodeTirtho97",
   "license": "MIT",
   "dependencies": {
